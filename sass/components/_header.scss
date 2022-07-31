@@ -1,0 +1,256 @@
+.header__nav {
+  box-sizing: border-box;
+  position: relative;
+  &.is-open {
+    overflow-y: scroll;
+    position: fixed;
+    left: 0;
+    right: 0;
+    height: 100vh;
+    background-color: #fff;
+    @media screen and (min-width: 992px) {
+    overflow-y: auto;
+    }
+  }
+}
+// Полоса хедер desktop
+.header__wrap{
+  @media screen and (min-width: 992px) {
+    padding-top: 10px;
+    display: grid;
+    grid-template: 75px/repeat(2,auto);
+    align-items: center;
+  }
+  @media screen and (min-width: 1370px) {
+    grid-template: 160px/1fr 1fr;
+    padding-top: 0;
+  }
+}
+// Кнопки меню
+.header__buttons {
+  display: grid;
+  grid-template: 81px/1fr 1fr;
+  justify-content: space-between;
+  align-items: center;
+  @media screen and (min-width:575px) {
+    grid-template: 131px/1fr 1fr;
+  }
+  @media screen and (min-width:767px){
+    grid-template: 123px/1fr 1fr;
+  }
+  @media screen and (min-width: 992px) {
+    display: block;
+  }
+}
+// Логотип
+.logo {
+  display: block;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: calc(36 / 24);
+  color: $logo-primary-color;
+  text-decoration: none;
+  @media screen and (min-width: 575px) {
+    font-weight: 400;
+    font-size: 30px;
+    line-height: (45 / 30);
+  }
+  @media screen and (min-width: 1370px) {
+    font-size: 36px;
+    line-height: 54 / 36;
+  }
+}
+.header__logo {
+  @media screen and (min-width: 575px) {
+  }
+}
+.logo span {
+  color: $logo-seconadary-color;
+}
+// Флип-флоп
+.header__burger {
+  display: block;
+  justify-self: end;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  @media screen and (min-width: 767px){
+    display: none;
+  }
+}
+.header__image {
+  use {
+    transition: opacity $transition-time $transition-fumction;
+  }
+}
+.header__menu--tablet,
+.header__menu--big-tablet,
+.header__menu--close-tablet {
+  display: none;
+}
+// Кнопки мобилок
+@media screen and (max-width: 575px) {
+  .header__menu--mobile {
+    .header__burger.is-open & {
+      opacity: 0;
+    }
+  }
+  .header__menu--close {
+    .header__burger & {
+      opacity: 0;
+    }
+    .header__burger.is-open & {
+      opacity: 1;
+    }
+  }
+}
+// Кнопки планшетов
+@media screen and (min-width: 575px) {
+  .header__menu--mobile,
+  .header__menu--close {
+    display: none;
+  }
+}
+@media screen and (min-width: 575px) and (max-width: 767px) {
+  .header__menu--tablet {
+    display: block;
+    .header__burger.is-open & {
+      opacity: 0;
+    }
+  }
+  .header__menu--close-tablet {
+    display: block;
+    opacity: 0;
+    .header__burger.is-open & {
+      opacity: 1;
+    }
+  }
+}
+
+// Кнопка большого меню
+.big-menu__burger{
+  justify-self: end;
+  padding: 0;
+  border: none;
+  background-color: transparent
+}
+.header__menu--big-tablet,.big-menu__burger{
+  display: none;
+  @media screen and (min-width: 767px) and (max-width: 991px){
+    display: block;
+    border: none;
+    background: transparent;
+  }
+}
+// Подменю
+.menu__container{
+  box-sizing: border-box;
+  @media screen and (max-width: 991px) {
+  position: absolute;
+  top: 81px;
+  width: calc(100% - 30px);
+  .header__nav & {
+    transform: translateY(-200%);
+    transition: transform $transition-time $transition-fumction;
+  }
+  .header__nav.is-open & {
+    transform: translateY(0);
+  }
+  }
+  @media screen and (min-width: 575px) {
+    top: 137px;
+    max-width: 507px;
+  }
+  @media screen and (min-width:767px) {
+    top: 123px;
+    max-width: 430px;
+    left: 0;
+  }
+  @media screen and (min-width: 992px) {
+    max-width: 930px;
+  }
+}
+.header__menu {
+  display: grid;
+  justify-items: stretch;
+  align-content: start;
+  grid-template: minmax(1px auto) repeat(5, minmax(22px, auto)) minmax(65px, auto) / auto;
+
+  background-color: $alternative-color;
+  overflow-y: scroll;
+  @media screen and (min-width: 992px) {
+    overflow-y: auto;
+    grid-template: 75px/repeat(5,auto) 160px;
+    align-items: center;
+  }
+}
+.header__link {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 2.71;
+  text-decoration: none;
+
+  color: $text-color;
+  transition:
+      text-shadow $transition-time $transition-fumction,
+      color $transition-time $transition-fumction;
+  @media screen and (min-width: 992px) {
+    font-size: 16px;
+    line-height: (24 / 16);
+    &:hover,&:focus {
+      color: orange;
+      text-shadow: 1px 1px 2px orange;
+    }
+  }
+  @media screen and (min-width: 1370px) {
+    font-size: 20px;
+    line-height: (30 / 20);
+  }
+}
+
+// Кнопка хедера
+.header__item:last-child{
+  margin-top: 70px;
+  @media screen and (min-width:575px) {
+    margin-top: 80px;
+  }
+  @media screen and (min-width: 992px) {
+    margin-top: 0;
+  }
+
+}
+.header__button {
+  font-size: 20px;
+  max-width: 330px;
+  line-height: 1.5;
+  text-decoration: none;
+  background: transparent;
+
+  color: $button-color;
+
+  transition: background-color $transition-time $transition-fumction,
+      border-color $transition-time $transition-fumction,
+      color $transition-time $transition-fumction;
+  
+  @media screen and (min-width: 992px) {
+    box-sizing: border-box;
+    height: 50px;
+    padding: 11px;
+    &:hover,
+    &:focus {
+      background-color: orange;
+      border-color: #fff;
+      color: #fff;
+    }
+  }
+  @media screen and (min-width: 1370px) {
+    height: 70px;
+    padding: 17px;
+  }
+}
+@media screen and (min-width: 992px) {
+  .current{
+    color: orange;
+  }
+}
